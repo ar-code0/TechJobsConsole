@@ -63,7 +63,7 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        PrintJobs(JobData.FindByValue(searchTerm));
                     }
                     else
                     {
@@ -116,9 +116,36 @@ namespace TechJobsConsole
             return choiceKeys[choiceIdx];
         }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+// The method PrintJobs is implemented here.
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+            if(someJobs.Count > 0)
+            {
+                foreach (Dictionary<string, string> listing in someJobs)
+                {
+                    Console.WriteLine("\n*****");
+
+                    foreach (KeyValuePair<string, string> item in listing)
+                    {
+                        Console.WriteLine(item.Key + ": " + item.Value);
+                    }
+
+                    Console.WriteLine("*****");
+                    Console.WriteLine(">>> The search results in " + someJobs.Count + " entries <<<");
+
+/*-------------------------------------------------------------------------------------------------------------------------------------*/ 
+/*Bonus Mission (Part-2): this line is used to test that creating a deep copy of Alljobs was successful.                
+                    JobData.printing();*/
+ /*-----------------------------------------------------------------------------------------------------------------------------------*/
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("No Results");
+            }
         }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }
